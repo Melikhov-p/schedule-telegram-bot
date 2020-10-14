@@ -4,15 +4,6 @@ from telebot import types
 from parse import get_schedule
 bot = telebot.TeleBot(config.token)
 now = datetime.datetime.now()
-# name = ''
-# group = int(input('group: '))
-# schedule = get_schedule(group)
-# if schedule:
-#     print('Расписание получено.')
-# while True:
-#     in_day = int(input('day: '))
-#     for i in range(len(schedule[in_day])):
-#         print(schedule[in_day][i])
 @bot.message_handler(commands=['start'])
 def start(message):
     if message.text == '/start':
@@ -29,7 +20,7 @@ def start(message):
 
 def get_group(message):
     group = int(message.text)
-    schedule, date = get_schedule(12001702)
+    schedule, date = get_schedule(group)
     print(date)
     date_index = 0
     for d in date:
